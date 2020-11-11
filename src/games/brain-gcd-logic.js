@@ -4,15 +4,15 @@ const gcd = (a, b) => {
   let max = 0;
   if (a === b) {
     return a;
-  } else {
-    max = a > b ? b : a;
-  };
+  }
+  max = a > b ? b : a;
   while (max >= 0) {
     if (a % max === 0 && b % max === 0) {
       return max;
-    };
+    }
     max -= 1;
-  };
+  }
+  return NaN;
 };
 
 export default async (counter) => {
@@ -29,5 +29,4 @@ export default async (counter) => {
     return false;
   }
   return true;
-
 };

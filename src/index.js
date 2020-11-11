@@ -15,9 +15,9 @@ export default async (nameGame) => {
       case 'brain-calc':
         result = await brainCalc(counter);
         break;
-        case 'brain-gcd':
-          result = await brainGcd(counter);
-          break;
+      case 'brain-gcd':
+        result = await brainGcd(counter);
+        break;
       default:
         break;
     }
