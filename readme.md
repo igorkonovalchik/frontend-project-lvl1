@@ -5,3 +5,5 @@
 [![Brain Even gameplay](https://asciinema.org/a/372279.svg)](https://asciinema.org/a/372279)
 
 [![Brain Calc gameplay](https://asciinema.org/a/yIJK6HwQL5WnOMe2Ahl8z3XlX.svg)](https://asciinema.org/a/yIJK6HwQL5WnOMe2Ahl8z3XlX)
+
+[![Brain GCD gameplay](https://asciinema.org/a/Yqwpw38gSkXcxf2MCMvyauviD.svg)](https://asciinema.org/a/Yqwpw38gSkXcxf2MCMvyauviD)

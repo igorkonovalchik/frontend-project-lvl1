@@ -1,6 +1,7 @@
 import getName from './cli.js';
 import brainEven from './games/brain-even-logic.js';
 import brainCalc from './games/brain-calc-logic.js';
+import brainGcd from './games/brain-gcd-logic.js';
 
 export default async (nameGame) => {
   const name = await getName();
@@ -14,6 +15,9 @@ export default async (nameGame) => {
       case 'brain-calc':
         result = await brainCalc(counter);
         break;
+        case 'brain-gcd':
+          result = await brainGcd(counter);
+          break;
       default:
         break;
     }
