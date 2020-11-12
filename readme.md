@@ -9,3 +9,5 @@
 [Brain GCD gameplay](https://asciinema.org/a/Yqwpw38gSkXcxf2MCMvyauviD)
 
 [Brain Progression gameplay](https://asciinema.org/a/xQR2tI7VAexLfOkUDdDwb4nTW)
+
+[Brain Prime gameplay](https://asciinema.org/a/NDlpmzzlS2jhGQ8LIuqfp8utS)

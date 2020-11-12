@@ -3,6 +3,7 @@ import brainEven from './games/brain-even-logic.js';
 import brainCalc from './games/brain-calc-logic.js';
 import brainGcd from './games/brain-gcd-logic.js';
 import brainProgression from './games/brain-progression-logic.js';
+import brainPrime from './games/brain-prime-logic.js';
 
 export default async (nameGame) => {
   const name = await getName();
@@ -21,6 +22,9 @@ export default async (nameGame) => {
         break;
       case 'brain-progression':
         result = await brainProgression(counter);
+        break;
+      case 'brain-prime':
+        result = await brainPrime(counter);
         break;
       default:
         break;
