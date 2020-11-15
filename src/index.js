@@ -8,8 +8,10 @@ export default async (name, counter, question, correct, isNumber = true) => {
       console.log(`'${answer}' is wrong answer ;(.`);
       console.log(`Let's try again, ${name}!`);
       return false;
-    };
-  }else{ answer = Number(answer); };
+    }
+  } else {
+    answer = Number(answer);
+  }
   if (answer !== correct) {
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
     console.log(`Let's try again, ${name}!`);

@@ -1,4 +1,3 @@
-
 import askName from '../cli.js';
 import gameEngine from '../index.js';
 
