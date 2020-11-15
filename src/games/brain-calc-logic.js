@@ -1,4 +1,5 @@
-import promptly from 'promptly';
+import askName from '../cli.js';
+import gameEngine from '../index.js';
 
 const calc = (a, b, operation) => {
   let result;
@@ -18,20 +19,19 @@ const calc = (a, b, operation) => {
   return result;
 };
 
-export default async (counter) => {
-  if (counter === 1) {
-    console.log('What is the result of the expression?');
-  }
-  const firstNumber = Math.floor(Math.random() * 100);
-  const secondNumber = Math.floor(Math.random() * 100);
-  const operationArray = ['+', '-', '*'];
-  const operation = Math.floor(Math.random() * 3);
-  console.log(`Question: ${firstNumber} ${operationArray[operation]} ${secondNumber}`);
-  const correct = calc(firstNumber, secondNumber, operationArray[operation]);
-  const answer = await promptly.prompt('Your answer: ');
-  if (Number(answer) !== correct) {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
-    return false;
-  }
-  return true;
+export default async () => {
+  const name = await askName();
+  console.log('What is the result of the expression?');
+  let attempt = true;
+  let counter = 1;
+  do {
+    const firstNumber = Math.floor(Math.random() * 100);
+    const secondNumber = Math.floor(Math.random() * 100);
+    const operationArray = ['+', '-', '*'];
+    const operation = Math.floor(Math.random() * 3);
+    const question = `${firstNumber} ${operationArray[operation]} ${secondNumber}`;
+    const correct = calc(firstNumber, secondNumber, operationArray[operation]);
+    attempt = await gameEngine(name, counter, question, correct);
+    counter += 1;
+  } while (attempt);
 };

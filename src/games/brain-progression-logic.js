@@ -1,4 +1,5 @@
-import promptly from 'promptly';
+import askName from '../cli.js';
+import gameEngine from '../index.js';
 
 const progression = (a, b) => {
   const result = [];
@@ -8,21 +9,18 @@ const progression = (a, b) => {
   return result;
 };
 
-export default async (counter) => {
-  if (counter === 1) {
-    console.log('What number is missing in the progression?');
-  }
-  const hideItem = Math.floor(Math.random() * 10);
-  const array = progression(Math.floor(Math.random() * 9) + 1, Math.floor(Math.random() * 9) + 1);
-  const correct = array[hideItem];
-  array[hideItem] = '..';
-
-  console.log(`Question: ${array.join(' ')}`);
-  const answer = await promptly.prompt('Your answer: ');
-
-  if (Number(answer) !== correct) {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
-    return false;
-  }
-  return true;
+export default async () => {
+  const name = await askName();
+  console.log('What number is missing in the progression?');
+  let attempt = true;
+  let counter = 1;
+  do {
+    const hideItem = Math.floor(Math.random() * 10);
+    const array = progression(Math.floor(Math.random() * 9) + 1, Math.floor(Math.random() * 9) + 1);
+    const correct = array[hideItem];
+    array[hideItem] = '..';
+    const question = `${array.join(' ')}`;
+    attempt = await gameEngine(name, counter, question, correct);
+    counter += 1;
+  } while (attempt);
 };

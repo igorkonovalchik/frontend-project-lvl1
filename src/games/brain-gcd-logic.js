@@ -1,4 +1,5 @@
-import promptly from 'promptly';
+import askName from '../cli.js';
+import gameEngine from '../index.js';
 
 const gcd = (a, b) => {
   let max = 0;
@@ -15,18 +16,17 @@ const gcd = (a, b) => {
   return NaN;
 };
 
-export default async (counter) => {
-  if (counter === 1) {
-    console.log('Find the greatest common divisor of given numbers.');
-  }
-  const firstNumber = Math.floor(Math.random() * 100);
-  const secondNumber = Math.floor(Math.random() * 100);
-  console.log(`Question: ${firstNumber} ${secondNumber}`);
-  const answer = await promptly.prompt('Your answer: ');
-  const correct = gcd(firstNumber, secondNumber);
-  if (Number(answer) !== correct) {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
-    return false;
-  }
-  return true;
+export default async () => {
+  const name = await askName();
+  console.log('Find the greatest common divisor of given numbers.');
+  let attempt = true;
+  let counter = 1;
+  do {
+    const firstNumber = Math.floor(Math.random() * 100) + 1;
+    const secondNumber = Math.floor(Math.random() * 100) + 1;
+    const question = `${firstNumber} ${secondNumber}`;
+    const correct = gcd(firstNumber, secondNumber);
+    attempt = await gameEngine(name, counter, question, correct);
+    counter += 1;
+  } while (attempt);
 };

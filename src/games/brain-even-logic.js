@@ -1,22 +1,17 @@
-import promptly from 'promptly';
 
-export default async (counter) => {
-  if (counter === 1) {
-    console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  }
-  const number = Math.floor(Math.random() * 10);
+import askName from '../cli.js';
+import gameEngine from '../index.js';
+
+export default async () => {
+  const name = await askName();
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  let attempt = true;
   const even = (n) => !(n % 2);
-  console.log(`Question: ${number}`);
-  const answer = await promptly.prompt('Your answer: ');
-  if (answer === 'yes' || answer === 'no') {
-    const correct = even(number) ? 'yes' : 'no';
-    if (answer !== correct) {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
-      return false;
-    }
-  } else {
-    console.log(`'${answer}' is wrong answer ;(.`);
-    return false;
-  }
-  return true;
+  let counter = 1;
+  do {
+    const question = Math.floor(Math.random() * 10);
+    const correct = even(question) ? 'yes' : 'no';
+    attempt = await gameEngine(name, counter, question, correct, true);
+    counter += 1;
+  } while (attempt);
 };
