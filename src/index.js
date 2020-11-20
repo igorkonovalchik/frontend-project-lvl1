@@ -1,6 +1,19 @@
 import promptly from 'promptly';
+import brainEvenLogic from './games/brain-even-logic.js';
 
-export default async (name, counter, question, correct, isNumber = true) => {
+export default async (conditions, currentTry, question, correct, isNumber = true) => {
+  console.log('Welcome to the Brain Games!');
+  console.log('May I have your name?');
+  const name = await promptly.prompt('Your answer: ');
+  console.log(`Hello, ${name}!`);
+  const tryQuantity = 3; 
+  console.log(brainEvenLogic('conditions'));
+  for (let index = 0; index < tryQuantity; index++) {
+    
+    
+  }
+
+  if (currentTry === firstTry) { console.log(conditions); };
   console.log(`Question: ${question}`);
   let answer = await promptly.prompt('Your answer: ');
   if (!isNumber) {
@@ -17,7 +30,7 @@ export default async (name, counter, question, correct, isNumber = true) => {
     console.log(`Let's try again, ${name}!`);
     return false;
   }
-  if (counter === 3) {
+  if (currentTry === lastTry) {
     console.log(`Congratulations, ${name}!`);
     return false;
   }

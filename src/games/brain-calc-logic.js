@@ -1,4 +1,3 @@
-import askName from '../cli.js';
 import gameEngine from '../index.js';
 
 const calc = (a, b, operation) => {
@@ -20,8 +19,7 @@ const calc = (a, b, operation) => {
 };
 
 export default async () => {
-  const name = await askName();
-  console.log('What is the result of the expression?');
+  const conditions = 'What is the result of the expression?';
   let attempt = true;
   let counter = 1;
   do {
@@ -31,7 +29,7 @@ export default async () => {
     const operation = Math.floor(Math.random() * 3);
     const question = `${firstNumber} ${operationArray[operation]} ${secondNumber}`;
     const correct = calc(firstNumber, secondNumber, operationArray[operation]);
-    attempt = await gameEngine(name, counter, question, correct);
+    attempt = await gameEngine(conditions, counter, question, correct);
     counter += 1;
   } while (attempt);
 };

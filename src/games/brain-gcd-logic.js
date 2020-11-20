@@ -1,4 +1,3 @@
-import askName from '../cli.js';
 import gameEngine from '../index.js';
 
 const gcd = (a, b) => {
@@ -17,8 +16,7 @@ const gcd = (a, b) => {
 };
 
 export default async () => {
-  const name = await askName();
-  console.log('Find the greatest common divisor of given numbers.');
+  const conditions = 'Find the greatest common divisor of given numbers.';
   let attempt = true;
   let counter = 1;
   do {
@@ -26,7 +24,7 @@ export default async () => {
     const secondNumber = Math.floor(Math.random() * 100) + 1;
     const question = `${firstNumber} ${secondNumber}`;
     const correct = gcd(firstNumber, secondNumber);
-    attempt = await gameEngine(name, counter, question, correct);
+    attempt = await gameEngine(conditions, counter, question, correct);
     counter += 1;
   } while (attempt);
 };

@@ -1,4 +1,3 @@
-import askName from '../cli.js';
 import gameEngine from '../index.js';
 
 const progression = (a, b) => {
@@ -10,8 +9,7 @@ const progression = (a, b) => {
 };
 
 export default async () => {
-  const name = await askName();
-  console.log('What number is missing in the progression?');
+  const conditions = 'What number is missing in the progression?';
   let attempt = true;
   let counter = 1;
   do {
@@ -20,7 +18,7 @@ export default async () => {
     const correct = array[hideItem];
     array[hideItem] = '..';
     const question = `${array.join(' ')}`;
-    attempt = await gameEngine(name, counter, question, correct);
+    attempt = await gameEngine(conditions, counter, question, correct);
     counter += 1;
   } while (attempt);
 };
