@@ -16,3 +16,4 @@ rules:
   no-console: 0
   no-await-in-loop: 0
   import/extensions: 0 # FIXME: remove when rule will be adjusted for new nodejs version
+  import/prefer-default-export: 0

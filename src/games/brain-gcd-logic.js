@@ -15,16 +15,15 @@ const gcd = (a, b) => {
   return NaN;
 };
 
-export default async () => {
-  const conditions = 'Find the greatest common divisor of given numbers.';
-  let attempt = true;
-  let counter = 1;
-  do {
-    const firstNumber = Math.floor(Math.random() * 100) + 1;
-    const secondNumber = Math.floor(Math.random() * 100) + 1;
-    const question = `${firstNumber} ${secondNumber}`;
-    const correct = gcd(firstNumber, secondNumber);
-    attempt = await gameEngine(conditions, counter, question, correct);
-    counter += 1;
-  } while (attempt);
+const brainGcdLogic = () => {
+  const firstNumber = Math.floor(Math.random() * 100) + 1;
+  const secondNumber = Math.floor(Math.random() * 100) + 1;
+  const question = `${firstNumber} ${secondNumber}`;
+  const correct = gcd(firstNumber, secondNumber);
+  return [question, correct];
+};
+
+export const startGame = () => {
+  const conditionsOfGame = 'Find the greatest common divisor of given numbers.';
+  gameEngine(brainGcdLogic, conditionsOfGame);
 };
