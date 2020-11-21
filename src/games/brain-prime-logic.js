@@ -1,4 +1,3 @@
-import askName from '../cli.js';
 import gameEngine from '../index.js';
 
 const isNormal = (a) => {
@@ -10,15 +9,13 @@ const isNormal = (a) => {
   return true;
 };
 
-export default async () => {
-  const name = await askName();
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  let attempt = true;
-  let counter = 1;
-  do {
-    const question = Math.floor(Math.random() * 10);
-    const correct = isNormal(question) ? 'yes' : 'no';
-    attempt = await gameEngine(name, counter, question, correct, false);
-    counter += 1;
-  } while (attempt);
+const brainPrimeLogic = () => {
+  const question = Math.floor(Math.random() * 10);
+  const correct = isNormal(question) ? 'yes' : 'no';
+  return [question, correct];
+};
+
+export const startGame = () => {
+  const conditionsOfGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  gameEngine(brainPrimeLogic, conditionsOfGame);
 };
