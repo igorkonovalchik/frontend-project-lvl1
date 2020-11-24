@@ -1,8 +1,9 @@
 import gameEngine from '../index.js';
+import getRundomNum from '../getRundomNum.js';
 
-const calc = (a, b, operation) => {
+const calcByOperator = (a, b, operator) => {
   let result;
-  switch (operation) {
+  switch (operator) {
     case '+':
       result = a + b;
       break;
@@ -19,12 +20,12 @@ const calc = (a, b, operation) => {
 };
 
 const brainCalcLogic = () => {
-  const firstNumber = Math.floor(Math.random() * 100);
-  const secondNumber = Math.floor(Math.random() * 100);
-  const operationArray = ['+', '-', '*'];
-  const operation = Math.floor(Math.random() * 3);
-  const question = `${firstNumber} ${operationArray[operation]} ${secondNumber}`;
-  const correct = calc(firstNumber, secondNumber, operationArray[operation]);
+  const firstNumber = getRundomNum(100);
+  const secondNumber = getRundomNum(100);
+  const operations = ['+', '-', '*'];
+  const operator = operations[getRundomNum(3)];
+  const question = `${firstNumber} ${operator} ${secondNumber}`;
+  const correct = String(calcByOperator(firstNumber, secondNumber, operator));
   return [question, correct];
 };
 

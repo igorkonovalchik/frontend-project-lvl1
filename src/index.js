@@ -10,31 +10,22 @@ const greeting = async () => {
   return name;
 };
 
-const checkAnswer = (answer, correct) => {
-  if (answer !== correct) {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
-    return false;
-  }
-  return true;
-};
-
-export default async (gameData, conditionsOfGame = '') => {
+export default async (gameData, conditionsOfGame) => {
   const name = await greeting();
   console.log(conditionsOfGame);
   for (let i = 1; i <= tryQuantity; i += 1) {
-    const data = gameData();
-    const question = data[0];
-    const correct = data[1];
+    const [question, correct] = gameData();
     console.log(`Question: ${question}`);
     const answer = await promptly.prompt('Your answer: ');
-    if (checkAnswer(answer, correct)) {
+    if (answer === correct) {
       console.log('Correct!');
-      if (i === tryQuantity) {
-        console.log(`Congratulations, ${name}!`);
-      }
     } else {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
       console.log(`Let's try again, ${name}!`);
       break;
+    }
+    if (i === tryQuantity) {
+      console.log(`Congratulations, ${name}!`);
     }
   }
 };
