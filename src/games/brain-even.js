@@ -1,8 +1,9 @@
 import gameEngine from '../index.js';
+import getRundomNum from '../getRundomNum.js';
 
 const brainEvenLogic = () => {
   const even = (n) => !(n % 2);
-  const question = Math.floor(Math.random() * 10);
+  const question = getRundomNum(10);
   const correct = even(question) ? 'yes' : 'no';
   return [question, correct];
 };

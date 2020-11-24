@@ -1,4 +1,5 @@
 import gameEngine from '../index.js';
+import getRundomNum from '../getRundomNum.js';
 
 const progression = (a, b) => {
   const result = [];
@@ -9,8 +10,8 @@ const progression = (a, b) => {
 };
 
 const brainPrimeLogic = () => {
-  const hideItem = Math.floor(Math.random() * 10);
-  const array = progression(Math.floor(Math.random() * 9) + 1, Math.floor(Math.random() * 9) + 1);
+  const hideItem = getRundomNum(10);
+  const array = progression(getRundomNum(9) + 1, getRundomNum(9) + 1);
   const correct = array[hideItem];
   array[hideItem] = '..';
   const question = `${array.join(' ')}`;

@@ -1,6 +1,7 @@
 import gameEngine from '../index.js';
+import getRundomNum from '../getRundomNum.js';
 
-const isNormal = (a) => {
+const isNormalNum = (a) => {
   for (let i = 0; i < a; i += 1) {
     if (a % i === 0 && i !== 1) {
       return false;
@@ -10,8 +11,8 @@ const isNormal = (a) => {
 };
 
 const brainPrimeLogic = () => {
-  const question = Math.floor(Math.random() * 10);
-  const correct = isNormal(question) ? 'yes' : 'no';
+  const question = getRundomNum(10);
+  const correct = isNormalNum(question) ? 'yes' : 'no';
   return [question, correct];
 };
 
