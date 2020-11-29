@@ -2,23 +2,21 @@ import gameEngine from '../index.js';
 import getRundomNum from '../getRundomNum.js';
 
 const gcd = (a, b) => {
-  let max = 0;
   if (a === b) {
     return a;
   }
-  max = a > b ? b : a;
-  while (max >= 0) {
-    if (a % max === 0 && b % max === 0) {
-      return max;
-    }
-    max -= 1;
-  }
-  return NaN;
+  const min = a > b ? b : a;
+  const max = a === min ? b : a;
+  if( max % min === 0 ){
+     return min;
+   }else{
+     return gcd(max, min - 1);
+  };
 };
 
 const brainGcdLogic = () => {
-  const firstNumber = getRundomNum(100) + 1;
-  const secondNumber = getRundomNum(100) + 1;
+  const firstNumber = getRundomNum(1, 100) + 1;
+  const secondNumber = getRundomNum(1, 100) + 1;
   const question = `${firstNumber} ${secondNumber}`;
   const correct = String(gcd(firstNumber, secondNumber));
   return [question, correct];
