@@ -22,10 +22,8 @@ export default async (gameData, conditionsOfGame) => {
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correct}'.`);
       console.log(`Let's try again, ${name}!`);
-      break;
-    }
-    if (i === tryQuantity) {
-      console.log(`Congratulations, ${name}!`);
+      return;
     }
   }
+  console.log(`Congratulations, ${name}!`);
 };
