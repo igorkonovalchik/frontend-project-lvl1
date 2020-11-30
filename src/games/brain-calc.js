@@ -20,10 +20,10 @@ const calcByOperator = (a, b, operator) => {
 };
 
 const brainCalcLogic = () => {
-  const firstNumber = getRundomNum(100);
-  const secondNumber = getRundomNum(100);
+  const firstNumber = getRundomNum(1, 100);
+  const secondNumber = getRundomNum(1, 100);
   const operations = ['+', '-', '*'];
-  const operator = operations[getRundomNum(3)];
+  const operator = operations[getRundomNum(0, 2)];
   const question = `${firstNumber} ${operator} ${secondNumber}`;
   const correct = String(calcByOperator(firstNumber, secondNumber, operator));
   return [question, correct];
