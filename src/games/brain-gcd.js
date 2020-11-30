@@ -7,11 +7,10 @@ const gcd = (a, b) => {
   }
   const min = a > b ? b : a;
   const max = a === min ? b : a;
-  if( max % min === 0 ){
-     return min;
-   }else{
-     return gcd(max, min - 1);
-  };
+  if (max % min === 0) {
+    return min;
+  }
+  return gcd(max, min - 1);
 };
 
 const brainGcdLogic = () => {

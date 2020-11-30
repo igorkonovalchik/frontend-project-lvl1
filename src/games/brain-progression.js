@@ -11,7 +11,7 @@ const progression = (a, b) => {
 
 const brainPrimeLogic = () => {
   const hideItem = getRundomNum(1, 10);
-  const array = progression(getRundomNum(1,9) + 1, ggetRundomNum(1,9) + 1);
+  const array = progression(getRundomNum(1, 9) + 1, getRundomNum(1, 9) + 1);
   const correct = array[hideItem];
   array[hideItem] = '..';
   const question = `${array.join(' ')}`;
