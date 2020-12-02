@@ -1,5 +1,5 @@
 import gameEngine from '../index.js';
-import getRundomNum from '../getRundomNum.js';
+import getRandomNum from '../getRandomNum.js';
 
 const calcByOperator = (a, b, operator) => {
   let result;
@@ -20,10 +20,10 @@ const calcByOperator = (a, b, operator) => {
 };
 
 const brainCalcLogic = () => {
-  const firstNumber = getRundomNum(1, 100);
-  const secondNumber = getRundomNum(1, 100);
+  const firstNumber = getRandomNum(1, 100);
+  const secondNumber = getRandomNum(1, 100);
   const operations = ['+', '-', '*'];
-  const operator = operations[getRundomNum(0, 2)];
+  const operator = operations[getRandomNum(0, 2)];
   const question = `${firstNumber} ${operator} ${secondNumber}`;
   const correct = String(calcByOperator(firstNumber, secondNumber, operator));
   return [question, correct];

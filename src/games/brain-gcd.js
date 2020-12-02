@@ -1,5 +1,5 @@
 import gameEngine from '../index.js';
-import getRundomNum from '../getRundomNum.js';
+import getRandomNum from '../getRandomNum.js';
 
 const gcd = (a, b) => {
   if (a === b) {
@@ -14,8 +14,8 @@ const gcd = (a, b) => {
 };
 
 const brainGcdLogic = () => {
-  const firstNumber = getRundomNum(1, 100) + 1;
-  const secondNumber = getRundomNum(1, 100) + 1;
+  const firstNumber = getRandomNum(1, 100) + 1;
+  const secondNumber = getRandomNum(1, 100) + 1;
   const question = `${firstNumber} ${secondNumber}`;
   const correct = String(gcd(firstNumber, secondNumber));
   return [question, correct];

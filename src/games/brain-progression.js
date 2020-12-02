@@ -1,20 +1,20 @@
 import gameEngine from '../index.js';
-import getRundomNum from '../getRundomNum.js';
+import getRandomNum from '../getRandomNum.js';
 
-const progression = (a, b) => {
+const getArithmeticProgressionSequence = (a, b) => {
   const result = [];
-  for (let i = 0; i < 10; i += 1) {
+  for (let i = 0; i < getRandomNum(5, 11); i += 1) {
     result[i] = a + i * b;
   }
   return result;
 };
 
 const brainPrimeLogic = () => {
-  const hideItem = getRundomNum(1, 10);
-  const array = progression(getRundomNum(1, 9) + 1, getRundomNum(1, 9) + 1);
-  const correct = array[hideItem];
-  array[hideItem] = '..';
-  const question = `${array.join(' ')}`;
+  const hideIndex = getRandomNum(1, 9);
+  const array = getArithmeticProgressionSequence(getRandomNum(1, 10), getRandomNum(1, 10));
+  const correct = array[hideIndex];
+  array[hideIndex] = '..';
+  const question = array.join(' ');
   return [question, correct];
 };
 

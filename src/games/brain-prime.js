@@ -1,5 +1,5 @@
 import gameEngine from '../index.js';
-import getRundomNum from '../getRundomNum.js';
+import getRandomNum from '../getRandomNum.js';
 
 const isPrimeNum = (a) => {
   for (let i = 2; i < a; i += 1) {
@@ -11,7 +11,7 @@ const isPrimeNum = (a) => {
 };
 
 const brainPrimeLogic = () => {
-  const question = getRundomNum(1, 10);
+  const question = getRandomNum(1, 10);
   const correct = isPrimeNum(question) ? 'yes' : 'no';
   return [question, correct];
 };
