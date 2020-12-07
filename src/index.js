@@ -2,19 +2,14 @@ import promptly from 'promptly';
 
 const tryQuantity = 3;
 
-const greeting = async () => {
+export default async (getGameData, conditionsOfGame) => {
   console.log('Welcome to the Brain Games!');
   console.log('May I have your name?');
   const name = await promptly.prompt('Your answer: ');
   console.log(`Hello, ${name}!`);
-  return name;
-};
-
-export default async (gameData, conditionsOfGame) => {
-  const name = await greeting();
   console.log(conditionsOfGame);
   for (let i = 1; i <= tryQuantity; i += 1) {
-    const [question, correct] = gameData();
+    const [question, correct] = getGameData();
     console.log(`Question: ${question}`);
     const answer = await promptly.prompt('Your answer: ');
     if (answer === correct) {

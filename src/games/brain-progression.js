@@ -1,25 +1,28 @@
-import gameEngine from '../index.js';
 import getRandomNum from '../getRandomNum.js';
+import startGameEngine from '../index.js';
 
-const getArProgSequence = (a, b) => {
-  const result = [];
-  for (let i = 0; i < getRandomNum(5, 11); i += 1) {
-    result[i] = a + i * b;
+const conditionsOfGame = 'What number is missing in the progression?';
+
+const getSequence = (firstMember, diff, lengthProg) => {
+  const progression = [];
+  for (let n = 0; n < lengthProg; n += 1) {
+    progression[n] = firstMember + n * diff;
   }
-  return result;
+  return progression;
 };
 
-const brainPrimeLogic = () => {
-  const arProgSequence = getArProgSequence(getRandomNum(1, 10), getRandomNum(1, 10));
-  const hideIndex = getRandomNum(1, arProgSequence.length - 1);
-  const correct = String(arProgSequence[hideIndex]);
-  arProgSequence[hideIndex] = '..';
-  const question = arProgSequence.join(' ');
-  console.log(correct);
+const getBrainPrimeData = () => {
+  const firstMember = getRandomNum(1, 10);
+  const diff = getRandomNum(1, 10);
+  const lengthProg = getRandomNum(5, 11);
+  const sequence = getSequence(firstMember, diff, lengthProg);
+  const hideIndex = getRandomNum(1, sequence.length - 1);
+  const correct = String(sequence[hideIndex]);
+  sequence[hideIndex] = '..';
+  const question = sequence.join(' ');
   return [question, correct];
 };
 
 export const startGame = () => {
-  const conditionsOfGame = 'What number is missing in the progression?';
-  gameEngine(brainPrimeLogic, conditionsOfGame);
+  startGameEngine(getBrainPrimeData, conditionsOfGame);
 };
