@@ -4,6 +4,7 @@ import startGameEngine from '../index.js';
 const conditionsOfGame = 'Find the greatest common divisor of given numbers.';
 
 const getGCD = (firstNumb, secondNum) => {
+  if (firstNumb === secondNum) { return firstNumb; }
   const min = Math.min(firstNumb, secondNum);
   const max = Math.max(firstNumb, secondNum);
   if (max % min === 0 || max === min) {
