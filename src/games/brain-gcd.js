@@ -5,8 +5,12 @@ const conditionsOfGame = 'Find the greatest common divisor of given numbers.';
 
 const getGCD = (firstNumb, secondNum) => {
   const modulo = firstNumb % secondNum;
-  if (modulo === firstNumb) { return getGCD(secondNum, firstNumb); }
-  if (modulo === 0) { return secondNum; }
+  if (modulo === firstNumb) {
+    return getGCD(secondNum, firstNumb);
+  }
+  if (modulo === 0) {
+    return secondNum;
+  }
   return getGCD(secondNum, modulo);
 };
 
