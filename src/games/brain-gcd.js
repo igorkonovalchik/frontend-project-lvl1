@@ -4,20 +4,10 @@ import startGameEngine from '../index.js';
 const conditionsOfGame = 'Find the greatest common divisor of given numbers.';
 
 const getGCD = (firstNumb, secondNum) => {
-  if (firstNumb === secondNum) { return firstNumb; }
-  const min = Math.min(firstNumb, secondNum);
-  const max = Math.max(firstNumb, secondNum);
-  if (max % min === 0 || max === min) {
-    return min;
-  }
-  let counter = min - 1;
-  while (counter > 1) {
-    if (min % counter === 0) {
-      return getGCD(max, counter);
-    }
-    counter -= 1;
-  }
-  return counter;
+  const modulo = firstNumb % secondNum;
+  if (modulo === firstNumb) { return getGCD(secondNum, firstNumb); }
+  if (modulo === 0) { return secondNum; }
+  return getGCD(secondNum, modulo);
 };
 
 const getBrainGcdData = () => {
